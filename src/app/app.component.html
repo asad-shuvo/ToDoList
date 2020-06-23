@@ -1,0 +1,61 @@
+<!-- <button class="add-new" (click)="openDialog()">Add New</button> -->
+
+<div class="main">
+  <app-search (click)="onSearch()"></app-search>
+
+<div class="optins-class common">
+<button class="add-new" (click)="onAddclick()">Add New</button>
+
+
+<app-display-options (click)="displayAcces()"></app-display-options>
+
+<label for="" class="total-sum">Total: <span>{{len}}</span></label>
+</div>
+<div class="showField">
+<table>
+   <tr class="display"></tr>
+  <tbody class="post-list"></tbody>
+</table>
+</div>
+
+<div>
+
+<div>
+  <app-add-update 
+  (onClickChange)="chaneMode($event)"
+  *ngIf="addButtonMode"
+  ></app-add-update>
+
+</div>
+<hr>
+<div 
+class="displayBlock"
+appBasicHighlight
+*ngFor="let elements of dataElements">
+
+<table>
+  <tbody class="post-list">
+  <div>
+  <tr>
+    <div>
+    <td *ngIf="!elements.complete"><span>Title:</span>{{elements.title}} </td>
+    <td *ngIf="elements.complete" style="text-decoration: line-through;"><span>Title:</span>{{elements.title}} </td>  
+  </div>
+    <div class="edit-options">
+    <td>
+      <input *ngIf="elements.complete" checked type="checkbox" (click)="onCheckClick(elements.id)">
+      <input *ngIf="!elements.complete" type="checkbox" (click)="onCheckClick(elements.id)">
+    </td>
+    <td ><app-edit-post (click)="editOption(elements.id)"></app-edit-post></td>
+    <td class="divideStick">|</td>
+    <td><app-delete-post  (click)="deletePosts(elements.id)"></app-delete-post></td>
+    </div>
+  </tr>
+</div>
+  <tr>
+    <td><span>Description:</span>{{elements.description}}</td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
