@@ -17,6 +17,7 @@ import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DisplayService } from './display-options/displayAdd.service';
 import { DeletePostService } from './delete-post/deletePost.service';
+import { ShortenPipe } from './pipe/shorten.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { DeletePostService } from './delete-post/deletePost.service';
     BasicHighlightDirective,
     EditPostComponent,
     DeletePostComponent,
-    MyDialogComponent
+    MyDialogComponent,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { DeletePostService } from './delete-post/deletePost.service';
     MatDialogModule
   ],
   entryComponents: [
-    MyDialogComponent
+    AddUpdateComponent
   ],
   providers: [PostAddingService,
               SearchAddService,

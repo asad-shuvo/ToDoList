@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { DisplayService } from './display-options/displayAdd.service';
 import { DeletePostService } from './delete-post/deletePost.service';
+import { AddUpdateComponent } from './add-update/add-update.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
   }
 
   openDialog() {
-    let dialogRef = this.dialog.open(MyDialogComponent);
+    let dialogRef = this.dialog.open(AddUpdateComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
@@ -62,6 +63,7 @@ export class AppComponent implements OnInit {
     this.displayAcces();
   }
   onAddclick() {
+    this.openDialog();
     this.postAddingService.typeOfMode(1, 0);
     this.addMode = true;
     this.editMode = false;
@@ -74,6 +76,7 @@ export class AppComponent implements OnInit {
     this.displayAcces();
   }
   editOption(id: number) {
+    this.openDialog();
     this.postAddingService.editIdSet(id);
     this.postAddingService.showValueOnInput();
 
@@ -82,6 +85,7 @@ export class AppComponent implements OnInit {
     this.addMode = false;
     this.editMode = true;
     this.displayAcces();
+   
   }
   onCheckClick(id: number) {
     this.postAddingService.checkOption(id);

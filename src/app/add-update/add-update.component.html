@@ -1,14 +1,7 @@
 <div id="modal-wrapper" class="modal">
-  
-    <form class="modal-content animate" action="" #f="ngForm" >
-
-        <div class="update-list">
-
-            <H2
-            *ngIf="!editMode"
-             class="create-update">Create ToDo</H2>
-            <H2 *ngIf="editMode" class="create-update">Update ToDo</H2>
-
+      <form class="modal-content animate" action="" #f="ngForm" >
+      <div class="update-list">
+             <H2 class="create-update">{{editMode===false?'Create ToDo':'Update ToDo'}}</H2>
         </div>
         <div class="update-box update-list ">
             <div class="title common-list">
@@ -19,10 +12,6 @@
            required
            #dataName
            >
-           <!-- <input *ngIf="editMode" class="title-input" type="text" 
-           [value]="defaultName"
-           #dateName
-           > -->
        </div>
        <div class="description common-list">
            <Label>Description:</Label>
@@ -31,12 +20,22 @@
            name="description"
             #dataDescription>
        </div>
-
        <div class="cancel-create">
-           <button class="Cancel" (click)="onCancel()">Cancel</button>
-           <button  *ngIf="!editMode" class="Create btn" (click)="onAddPost(dataName,dataDescription)">Create</button>
-           <button  *ngIf="editMode" class="Create btn" (click)="onEditPost(dataName,dataDescription)">Update</button>
-
+           <button class="Cancel" (click)="onCancel()" mat-dialog-close>Cancel</button>
+           <button 
+           *ngIf="!editMode"
+           class="Create btn"
+            (click)="onAddPost(dataName,dataDescription)" 
+            mat-dialog-close>
+           Create
+        </button>  
+        <button 
+        *ngIf="editMode"
+        class="Create btn"
+        (click)="onEditPost(dataName,dataDescription)" 
+        mat-dialog-close>
+        Update
+    </button>
        </div>
         </div>   
     </form>
