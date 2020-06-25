@@ -1,4 +1,4 @@
-<div id="modal-wrapper" class="modal">
+<!-- <div id="modal-wrapper" class="modal">
       <form class="modal-content animate" action="" #f="ngForm" >
       <div class="update-list">
              <H2 class="create-update">{{editMode===false?'Create ToDo':'Update ToDo'}}</H2>
@@ -39,4 +39,40 @@
        </div>
         </div>   
     </form>
-  </div>
+  </div> -->
+  <div id="modal-wrapper" class="modal">
+    <form class="modal-content animate" action="" 
+    [formGroup]="postAddupdateForm"
+    (ngSubmit)="onSubmit()"
+    >
+    <div class="update-list">
+    <H2 class="create-update">
+        {{editMode===false?'Create ToDo':'Update ToDo'}}
+    </H2>
+      </div>
+      <div class="update-box update-list ">
+          <div class="title common-list">
+         <Label>Title:</Label>
+         <input  class="title-input" type="text" 
+         formControlName="title"
+         required
+         >
+     </div>
+     <div class="description common-list">
+         <Label>Description:</Label>
+         <input class="description-input" type="text"
+         formControlName="description"
+          >
+     </div>
+     <div class="cancel-create">
+         <button class="Cancel" (click)="onCancel()" mat-dialog-close>Cancel</button>
+         <button 
+         type="submit"
+         class="Create btn"
+          mat-dialog-close>
+        {{editMode===false?'Create':'Update'}} 
+      </button>  
+     </div>
+      </div>   
+  </form>
+</div>

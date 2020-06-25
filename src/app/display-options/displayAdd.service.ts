@@ -1,27 +1,28 @@
-import { Injectable,EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { PostAddingService } from '../postAdd.service';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class DisplayService{
     constructor(private postAddingService:PostAddingService){}
     displayType=1;
-    displayTypeChanged=new EventEmitter<number>();
+    displayTypeChanged=new Subject<number>();
     dataElemets=[];
     dataElemets2=[];
 
     
     diplayTypeOn(type:number){
         this.displayType=type;
-        this.displayTypeChanged.emit(type);
+        this.displayTypeChanged.next(type);
       }
       accessDisplayType(){
         console.log(this.displayType);
-        this.displayTypeChanged.emit(this.displayType);
+        this.displayTypeChanged.next(this.displayType);
         return this.displayType;
 
     }
     displayPosts(){
-        this.displayTypeChanged.emit(this.displayType);
+        this.displayTypeChanged.next(this.displayType);
     this.dataElemets2 = this.postAddingService.getPosts();
 this.dataElemets=[];
     if (this.displayType === 2) {

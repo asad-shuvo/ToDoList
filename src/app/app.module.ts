@@ -6,7 +6,7 @@ import { AddUpdateComponent } from './add-update/add-update.component';
 import { SearchComponent } from './search/search.component';
 import { DisplayOptionsComponent } from './display-options/display-options.component';
 import { MainCompComponent } from './main-comp/main-comp.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BasicHighlightDirective } from './basic-highlight/basic-highlight.directive';
 import { PostAddingService } from './postAdd.service';
 import { EditPostComponent } from './edit-post/edit-post.component';
@@ -35,7 +35,8 @@ import { ShortenPipe } from './pipe/shorten.pipe';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     AddUpdateComponent
